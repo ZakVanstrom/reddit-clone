@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Box,
   Flex,
   Heading,
   Spacer,

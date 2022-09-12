@@ -4,9 +4,11 @@ const { query } = require('../db')
 module.exports = (optional = false) => async (req, res, next) => {
   try {
     const token = req.get('Authorization').replace('Bearer ', '')
+    console.log("Token Time!")
     const { id } = await jwt.verify(token, process.env.JWT_SECRET)
     const { rows: [user] } = await query('select * from users where id = $1', [id])
     if (!user.tokens.includes(token)) {
+      console.log("Fuck token failure...")
       throw new Error()
     }
     req.user = user
@@ -15,6 +17,7 @@ module.exports = (optional = false) => async (req, res, next) => {
     if (!optional) {
       return res.status(401).send({ error: 'Please authenticate' })
     }
+    console.log("Token Time FINISHED!")
   }
   next()
 }
