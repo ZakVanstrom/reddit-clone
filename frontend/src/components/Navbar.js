@@ -57,7 +57,7 @@ const Navbar = ({
         display={user ? 'block' : ['none', 'block']}
         fontSize={['1.3rem', '2.25rem']}
       >
-        weddit
+        Crowdy
       </Heading>
       <HStack>
         <Menu>
